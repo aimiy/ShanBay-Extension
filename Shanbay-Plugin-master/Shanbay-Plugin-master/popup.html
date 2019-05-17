@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Popup</title>
+    <meta charset="utf-8">
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <style>
+      body {
+        padding: 0;
+        width: 280px;
+        min-height: 64px;
+        background-image: url('image/mosaics.png');
+      }
+
+      #pp_search {
+      }
+
+      #pp_candidate {
+        display: none;
+      }
+      #pp_candidate ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      #pp_candidate ul>li {
+        display: list-item;
+      }
+      #pp_candidate ul>li:first-child .cc {
+        border-top: 0;
+        padding-top: 2px;
+      }
+      #pp_candidate ul>li:last-child .cc {
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+      #pp_candidate ul>li .cc {
+        position: relative;
+        display: block;
+        height: 24px;
+        padding-left: 8px;
+        overflow: hidden;
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      #pp_candidate ul>li .cc .c1 {
+        font-size: 16px;
+        color: #4183c4;
+      }
+      #pp_candidate ul>li .cc .c2 {
+        margin-left: 2px;
+        font-size: 12px;
+        color: gray;
+      }
+      #pp_candidate ul>li .cc:hover {
+        text-decoration: none;
+        background-color: rgb(239, 246, 250);
+      }
+
+      #pp_heading {
+        color: #333;
+        padding: 6px 6px;
+        margin-top: 1px;
+        border-bottom: 1px solid rgb(238, 238, 238);
+        display: none;
+      }
+
+      #pp_body {
+        color: #333;
+        padding: 6px 6px;
+        display: none;
+      }
+
+      #word {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      #pronunciation {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 18px;
+        margin-left: 8px;
+      }
+      #frequence {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 18px;
+        margin-left: 8px;
+        font-style:italic;
+      }
+
+      #definition {
+        font-size: 16px;
+      }
+
+      #retention {
+        text-align: right;
+      }
+
+      #current_retention {
+        text-align: center;
+      }
+
+      #target_retention {
+        margin-right: 5px;
+      }
+
+      #reviewoptions {
+        margin-top: 3px;
+        display: none;
+      }
+
+      #reviewheader {
+        white-space:nowrap;
+      }
+
+      .reviewtitle {
+        margin-right: 4px;
+        margin-bottom: 0px;
+        padding-bottom: 3px;
+        color: rgb(102, 102, 102);
+        font-size: 13px;
+        text-decoration: none;
+      }
+      .reviewtitle:hover {
+        text-decoration: none;
+      }
+
+      #reviewcontent {
+        margin-top: 1px;
+        padding-top: 3px;
+        border-top: 1px solid rgb(238, 238, 238);
+        word-wrap: break-word;
+        display:none;
+      }
+
+      #reviewcontent .refer {
+        color: gray;
+      }      
+
+      #reviewcontent .refer a {
+        margin-left: 6px;
+      }      
+
+      #reviewcontent .synonym {
+        color: gray;
+      }      
+
+      #reviewcontent .synonym a {
+        margin-right: 9px;
+      }
+
+      #reviewcontent .similar {
+        margin:0;
+        padding:0;
+        border:0;
+        height: 16px;
+        line-height: 16px;
+        white-space:nowrap;
+        overflow:hidden;
+      }
+      #reviewcontent .similar .s1 {
+        font-size:14px;
+        margin-left:2px;
+        text-decoration:none;
+      }
+      #reviewcontent .similar .s2 {
+        font-size:12px;
+        color:gray;
+        margin-left:4px;
+        font-style:italic;
+      }
+      #reviewcontent .similar .s3 {
+        font-size:12px;
+        color:gray;
+        margin-left:8px;
+      }
+
+      #errormsg {
+        margin: 3px 0 0 0;
+        display: none; 
+      }
+
+    </style>    
+
+	<script src="lib/jquery.js"></script>
+  <script src="lib/howler.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="lib/mousetrap/mousetrap.min.js"></script>
+  <script src="lib/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js"></script>
+  <script src="lib/wordlist.js"></script>
+  <script src="lib/phrases.js"></script>
+  <script src="lib/timidlist.js"></script>
+  <script src="lib/levenshtein.js"></script>
+  <script src="lib/lcs.js"></script>
+  <script src="lib/metaphone.js"></script>
+  <script src="lib/double_metaphone.js"></script>
+  <script src="lib/priheap.js"></script>
+  <script src="lib/literal.js"></script>
+  <script src="preference.js"></script>
+  <script src="third.js"></script>
+	<script src="popup.js"></script>
+
+  </head>
+
+
+  <body>
+    <div id="pp_search">
+      <div class="input-group">
+        <span id="wordquery" class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+        <input id="queryword" type="text" class="form-control" style="background:rgb(252, 252, 252);">
+      </div>
+    </div>
+
+    <div id="pp_candidate"> </div>
+     
+    <div id="pp_heading">
+        <span id="word"> </span>
+        <span id="pronunciation"> </span>
+        <span id="frequence"> </span>
+    </div>
+
+    <div id="pp_body">
+      <div id='definition'> </div>
+      <p> </p>
+      
+      <div>
+        <div id='retention' class="progress">
+          <div id='current_retention' class="progress-bar" role="progressbar" style="width: 3%;"> </div>
+          <span id='target_retention'> </span>
+        </div>
+      </div>
+
+      <div>
+        <div id='wordreview' class="btn-group">
+          <button id="old_review" type="button" class="btn btn-info"> 查看 </button>
+          <button id="more_review" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+        </div>
+
+        <button id="old_forget" type="button" class="btn btn-warning" style="margin-left: 30px;"> 我忘了 </button>
+        <button id="new_adding" type="button" class="btn btn-success" style="margin-left: 30px;"> 添加入库 </button>
+        <span id="adding_forget_waiting"></span> 
+      </div>
+
+      <div id="reviewoptions">
+          <!-- <a id="old_iciba_review" href="#"> 金山词霸 </a> -->
+          <!-- <a id="old_youdao_review" href="#"> 有道词典 </a> -->
+          <!-- <a id="old_vocabulary_review" href="#"> Vocabulary.com </a> -->
+          <!-- <a id="old_etymology_review" href="#"> Etymonline.com </a> -->
+          <div id="reviewheader">
+            <a id="old_refer_review" class="reviewtitle" href="#">单复数</a> 
+            <a id="old_synonym_review" class="reviewtitle" href="#">近义词</a> 
+            <a id="old_family_review" class="reviewtitle" href="#">词家族</a> 
+            <a id="old_similar_review" class="reviewtitle" href="#">形似词</a> 
+            <a id="old_phontic_review" class="reviewtitle" href="#">音似词</a> 
+          </div>
+          <div id="reviewcontent"> </div>
+      </div>
+
+    </div>
+
+    <div id="errormsg" class="alert alert-warning"> </div>
+  </body>
+</html>
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Options</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Shanbay Plugin Setting Page</h1>
+			<p></p>
+			<p>
+				<a class="btn btn-primary btn-lg" role="button"
+					href="https://github.com/lingjf/Shanbay-Plugin">Learn more</a>
+
+				<a class="btn btn-primary btn-lg" role="button"
+					href="help.html">使用帮助</a>
+				<iframe
+					src="http://ghbtns.com/github-btn.html?user=lingjf&repo=Shanbay-Plugin&type=watch&count=true"
+					allowtransparency="true" frameborder="0" scrolling="0" width="62" height="20"></iframe>
+				<iframe
+					src="http://ghbtns.com/github-btn.html?user=lingjf&repo=Shanbay-Plugin&type=fork"
+					allowtransparency="true" frameborder="0" scrolling="0" width="62"
+					height="20"></iframe>
+				<iframe
+					src="http://ghbtns.com/github-btn.html?user=lingjf&repo=Shanbay-Plugin&type=follow"
+					allowtransparency="true" frameborder="0" scrolling="0" width="140"
+					height="20"></iframe>
+			</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default" id="ttsSpeakOut"> <input
+				type="checkbox" name="options"> 选中时朗读 
+			</label>
+
+			<label class="btn btn-default" id="IncrementalQuery"> <input
+				type="checkbox" name="options"> 即时查询
+			</label>
+		</div>
+
+		<p></p>
+
+		<div class="panel panel-default">
+		  <div class="panel-heading">
+		    <h3 class="panel-title"> Keyboard Shortcuts </h3>
+		  </div>
+		  <div class="panel-body">
+		    <div class="list-group">
+		      <a href="#" class="list-group-item">
+			  	<label>开始输入 :</label>
+				<button type="button" class="btn btn-default"> &#9000; Control+i </button> 
+				<button type="button" class="btn btn-default"> &#9000; ⌘+i </button> 
+			  </a>
+			  <a href="#" class="list-group-item">
+			  	<label>添加入库 :</label>
+				<button type="button" class="btn btn-default"> &#9000; s s </button> 
+				<button type="button" class="btn btn-default"> &#9000; s Space </button> 
+				<button type="button" class="btn btn-default"> &#9000; Control+s </button> 
+				<button type="button" class="btn btn-default"> &#9000; ⌘+s </button> 
+			  </a>
+			  <a href="#" class="list-group-item">
+			  	<label>我忘了 :</label>
+				<button type="button" class="btn btn-default"> &#9000; f f </button> 
+				<button type="button" class="btn btn-default"> &#9000; Control+f </button> 
+				<button type="button" class="btn btn-default"> &#9000; ⌘+f </button> 
+			  </a>
+			  <a href="#" class="list-group-item">
+			  	<label>发音 :</label>
+				<button type="button" class="btn btn-default"> &#9000; p </button> 
+				<button type="button" class="btn btn-default"> &#9000; Space </button> 
+				<button type="button" class="btn btn-default"> &#9000; Control+u </button> 
+				<button type="button" class="btn btn-default"> &#9000; ⌘+u </button> 
+			  </a>
+			</div>
+		  </div>
+		</div>
+
+	</div>
+</body>
+
+<script src="lib/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="preference.js"></script>
+<script src="options.js"></script>
+</html>
+
