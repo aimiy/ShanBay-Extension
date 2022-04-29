@@ -1,14 +1,18 @@
 {
     "name": "ShanBay Extension",
-    "version": "1.0",
-    "manifest_version": 2,
-    "description": "扇贝收集单词扩展",
-    "browser_action": {
+    "action": {
+        "default_title": "ShanBay Extension",
         "default_icon": "icon.png",
         "default_popup": "popup.html"
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval' ; object-src 'self'",
+    "description": "收集单词至扇贝库",
+    "version": "1.0",
+    "manifest_version": 3,
     "permissions": [
-        "http://api.flickr.com/"
-    ]
+        "activeTab",
+        "scripting",
+        "bookmarks"
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAy5Hjn5BDYtngVzsXekpvAPQW7SFpKIM2z/xV4py5XTfOAT5Ln/rEnYfwGNrw6WEZAPo2OsFnSg1ZOpCe7E5NmQVyqbKul9sDwu7wtQ288W8nu2/OoeDfTrfUPSKswTPpA8DbFBLAyYsqLABvg8hpfWRBlKywGSNOAfciJCH13tyUDCMeDWrAbrpdjZDOjTXu7AXLEc5qrAPyLlDisK50THyyCU6BbLttJmIFo3Ymen8UrKkpKsp0ewr5AEDEm4HGgM6/rnAc2Ivpdnt3H3jKv/Ttge9/AkBFvPG0eEgilzkLfydgs1TZp/n4W5Az87LqNH9gN6tJz4z6h+ez3hbmiwIDAQAB"
 }

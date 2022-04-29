@@ -1,5 +1,5 @@
-import Service from 'service.js';
 
+console.log(Vue)
 Vue.component('todo-item', {
   props: ['todo'],
   template: '<li>{{ todo.text }}</li>'
@@ -16,8 +16,8 @@ var app = new Vue({
     ]
   },
   methods:{
-    searchWord:function(){
-      Service.getShanbayWord('apple')
-    }
+    // searchWord:function(){
+    //   Service.getShanbayWord('apple')
+    // }
   }
 })
