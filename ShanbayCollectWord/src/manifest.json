@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "__MSG_appTitle__",
+    "version": "1.0.0",
+    "description": "__MSG_appDescription__",
+    "host_permissions": ["<all_urls>"],
+    "action": {
+        "default_title": "ShanBay Extension",
+        "default_popup": "./libs/popup.html"
+    }
+}
